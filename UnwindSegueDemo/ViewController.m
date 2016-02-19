@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FirstViewController.h"
 
 @interface ViewController ()
 
@@ -18,7 +19,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
-
+- (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
+{
+    if ([[unwindSegue identifier] isEqualToString:@"BackAction"]) {
+        FirstViewController *vc = [unwindSegue sourceViewController];
+        lblName.text = vc.strName;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
